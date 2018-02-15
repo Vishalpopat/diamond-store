@@ -28,6 +28,7 @@ public class DiamondApiController implements DiamondApi {
 
     public ResponseEntity<Object> getInventory() {
         // do some magic!
+    	//
         return new ResponseEntity<Object>(HttpStatus.OK);
     }
 
