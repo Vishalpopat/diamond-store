@@ -1,8 +1,8 @@
-package io.swagger.service;
+package io.swagger.repository;
 
 import io.swagger.model.User;
 
-public interface UserService {
+public interface UserRepository {
 
 	String createUser(User body);
 
@@ -13,5 +13,4 @@ public interface UserService {
 	String loginUser(String username, String password);
 
 	String updateUser(User body);
-
 }
