@@ -34,7 +34,7 @@ public interface DiamondApi {
     @RequestMapping(value = "/diamond/inventory",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<Object> getInventory();
+    ResponseEntity<List<Diamond>> getInventory();
 
 
     @ApiOperation(value = "Place an order for diamond", notes = "", response = Order.class, tags={ "diamond", })

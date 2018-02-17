@@ -2,9 +2,10 @@ package io.swagger.api;
 
 import io.swagger.model.Diamond;
 import io.swagger.model.Order;
-
+import io.swagger.service.DiamondService;
 import io.swagger.annotations.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -24,17 +25,27 @@ import javax.validation.Valid;
 @Controller
 public class DiamondApiController implements DiamondApi {
 
+	private DiamondService diamondService;
 
-
-    public ResponseEntity<Object> getInventory() {
+    public ResponseEntity<List<Diamond>> getInventory() {
         // do some magic!
-    	//
-        return new ResponseEntity<Object>(HttpStatus.OK);
+    	List<Diamond> inventory = diamondService.getInventory();
+    	return new ResponseEntity<List<Diamond>>(inventory, HttpStatus.OK);
     }
 
     public ResponseEntity<Order> placeOrder(@ApiParam(value = "order placed for purchasing diamond" ,required=true )  @Valid @RequestBody Diamond body) {
         // do some magic!
+//    	diamondService.placeOreder();
         return new ResponseEntity<Order>(HttpStatus.OK);
     }
+
+	public DiamondService getDiamondService() {
+		return diamondService;
+	}
+
+	@Autowired
+	public void setDiamondService(DiamondService diamondService) {
+		this.diamondService = diamondService;
+	}
 
 }
